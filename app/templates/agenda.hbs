@@ -1,0 +1,39 @@
+<div class="top">
+  <h1>Todays agenda</h1>
+  <h2>CRUSH IT</h2>
+</div>
+
+{{#if showButtons}}
+    <div class="actions">
+      <p>
+        Did you crush it today?
+      </p>
+      <button {{action 'didCrushIt' false}}>NO</button>
+      <button {{action 'didCrushIt' true}}>YES</button>
+    </div>
+{{else}}
+  <div class="quote">
+    <blockquote>{{quote.text}}</blockquote>
+  </div>
+{{/if}}
+
+{{#if isStreak}}
+  <div class="streak">
+    <h2>You have been crushing it for <span>{{agenda.currentStreak}}</span> days.</h2>
+  </div>
+{{/if}}
+
+{{#if sortedArticles}}
+  <div class="articles">
+    <h2>Reading that might help you to crush it.</h2>
+    <ul>
+      {{#each sortedArticles as |article|}}
+        <li>
+          <a href="{{unbound article.url}}" target="_blank">
+            {{article.title}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}
